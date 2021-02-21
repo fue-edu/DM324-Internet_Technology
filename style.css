@@ -1,0 +1,161 @@
+/*@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+*/
+.title{
+    text-align: center; 
+    color:4CAF50;
+    text-transform: uppercase;
+font-size: 32px;
+font-family: 'Times New Roman', Times, serif
+}
+
+body{
+  /*  background-image: url(https://www.fue.edu.eg/ImageHandler.ashx?Id=6429&SS=7236ec28809dbdd72855fd7784ae9d01);*/
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+ul{
+    list-style-type: none;
+    border: 1px solid #e7e7e7; 
+    background-color: #f3f3f3;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+
+}
+li{
+    float: left;
+}
+
+a{
+    text-decoration: none;
+    color: #008CBA;
+}
+
+li a{
+    display: block;
+    color: #666;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+li a:hover{
+    background-color: #dddddd;
+}
+
+.nav-right{
+    float:right;
+}
+li a.active{
+background-color: rgb(76, 175, 80);
+color: white;
+}
+.searchbar{
+    width: 20%;
+    height: auto;
+   display: flex;
+    border: 1px;
+    border-style: solid;
+    border-color: #dfe1e5;
+    margin: 8px auto;
+    border-radius: 24px; /* changed from 30 to 15*/
+    padding: 0px 10px;
+    display: flexbox;
+   
+}
+
+.searchbar .searchicon svg{
+    width: 100%;
+    height: 100%;
+   
+    
+}
+.searchicon{
+    padding-top: 5px;
+    fill: #9aa0a6;    
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+
+.searchbar:hover{
+    /*box-shadow: 0px 0px 2px dimgray;*/
+    box-shadow:0 1px 6px 0 rgba(32,33,36,0.28);
+    border-color:rgba(223,225,229,0);
+   
+}
+
+
+.searchbox{
+
+    width: 100%;
+    padding: 8px 8px;
+    border: none;
+    margin: 0 2px;
+    outline: none;
+}
+
+div:not(.searchbar,.searchicon){
+    border:3px;
+    border-style: dotted;
+    border-radius: 15px;
+    box-shadow: 25px 25px 25px dimgray;
+    background-image: linear-gradient(red,yellow);
+
+
+}
+table {
+    width:100%;
+    border-collapse: collapse;
+}
+
+thead tr{
+    text-align: center;
+}
+
+thead{
+    background-color: rgb(76, 175, 80);
+    color:white;    
+}
+
+
+tbody tr:nth-child(even){
+background-color:lightgray;
+
+}
+
+.button{
+    background-color: rgb(76, 175, 80);
+    border:none;
+    padding: 15px 32px;
+    color:white;
+    font-size:14px;
+    display: inline-block;
+
+}
+
+input[type=text],[type=email],[type=tel],[type=date],select,textarea{
+    width: 50%;
+    padding: 6px 10px;
+    margin: 8px 0px;
+    box-sizing: border-box;
+    font-size: 16px;
+
+}
+fieldset{
+    margin: 20px;
+}
+p{
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 3px;
+    text-indent: 50px;
+    text-align: justify;
+}
+
+form{
+    width: 100%;
+    
+}

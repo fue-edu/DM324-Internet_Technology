@@ -1,0 +1,226 @@
+<html>
+    <head><title></title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <script>
+        //  var dataSource = [["20132627","Yousef Samir Allam", "Faculty of Computers and Information Technology","20132627.png"],
+        //                    ["20190000","xyz","Faculty 2","20190000.png"],
+        //                    ["20181877","Abdalla Ahmed Elsayed Ahmed", "Faculty of Computers and Information Technology","20181877.png"] ];
+
+                          // document.writeln("<h1>Heading</h1>");
+      </script>
+    </head>
+
+    <body onload="init();">
+        <nav>
+            <ul>
+                <li ><a href="index.html"  >Home</a></li>
+                <li ><a href="studentlist.html"class="active" >Students List</a></li>
+                <li ><a href="new_student.html" >New Student</a></li>
+        
+                <li class="nav-right"><a href="sign.html">Logout</a></li>
+            </ul>
+        
+        
+        <nav>
+<hr/>
+<section>
+
+    <div class="searchbar">              
+        <div class="searchicon">
+            <svg  focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+           </div>
+        
+        <input type="search" class="searchbox" id="txtSearch" oninput="mySearch()">
+      
+        <div class="searchicon" onclick="listen();">  <i class="material-icons">mic</i></div>
+    </div>
+
+    
+    
+    <div id="myTable"></div>
+
+
+</section>
+<hr/>
+<!--footer-->
+<a href ="http://www.fue.edu.eg" target="_blank">&copy; Future University in Egypt</a>&nbsp;&nbsp;&mdash;&nbsp;&nbsp;
+<a href="mailto:20132627@fue.edu.eg">contact us</a>
+<!--#footer-->
+
+<script>
+        var dataSource;
+    
+        function init()
+        {
+            dataSource = [];
+            loadJSON();
+       
+        }
+
+        function mySearch()
+        {
+         var input = document.getElementById('txtSearch').value;
+     //    console.log(input);
+         searchAlgorithm(input,dataSource);
+
+
+        }
+
+        function searchAlgorithm(input,data)
+        {
+            var flat = [].concat.apply([],data);
+        //    console.log(flat);
+            var col = flat.indexOf(input);
+        //    console.log(col);
+            var row = -1;
+
+            if(col != -1)
+            {
+               while(data[++row].length <= col)
+               {
+                   col -= data[row].length;
+               } 
+               var tempDataSource = [];
+               tempDataSource.push(data[row]);
+             
+               // console.log(tempDataSource);
+             
+               drawResultTable(tempDataSource);
+               
+            }else
+            {
+                init();
+            }
+        }
+        
+        function drawResultTable(data)
+            {
+                
+                var table ="";
+
+table  += "<table border='1'>" +
+          "<thead>"+
+          "<tr>"+
+            "  <td>ID</td>"+
+            " <td>Name</td>"+
+            " <td>Faculty</td>"+
+            " <td>Image</td>"+
+            "</tr>"+
+           "</thead>"+
+           "<tbody>";
+           //table body
+           var counter= 0;
+           for (var i= 0;i <data.length; i++)
+           {
+               var studentId = data[i][0];
+               var studentName= data[i][1];
+               var studentFaculty = data[i][2];
+               var studentImagePath = data[i][3];
+
+            table+= "<tr>";
+            table+= "<td>"+studentId+"</td>";
+            table+= "<td>"+studentName+"</td>";
+            table+= "<td>"+studentFaculty+"</td>";
+            table+= "<td><img src='images\\"+studentImagePath+"' width='60px' height='60px' alt='image of" +studentName+ "' ></td>";                 
+            table+="</tr>";      
+            
+            counter++;
+           }
+           //#table body
+table+="</tbody>";
+table+=    " <tfoot>"+
+    "  <tr>"+
+        " <td colspan='4'>"+
+            "     Total No of Students: "+counter+
+            "   </td>"+
+            "  </tr>"+
+            "    </tfoot>"+
+            "</table>";
+
+  document.getElementById('myTable').innerHTML  = table;
+        }
+       
+        //Ajax Example
+        function  loadJSON() {
+            var data_file =  "http://localhost/dm324-summer/api/get_all_students.php" ;//"data.json";
+            var http_request = new XMLHttpRequest();
+            var tempDataSource = [];
+            http_request.onreadystatechange = function(){
+                if (http_request.readyState == 4  ) {
+                  var jsonObj = JSON.parse(http_request.responseText);
+             
+                  var studentArray = [];
+                
+                  for (let i = 0; i < jsonObj.length; i++) {
+                    var Student = jsonObj[i];
+                       console.log(Student);
+                    studentArray.push(Student.students_univ_id);
+                    studentArray.push(Student.students_name);
+                    studentArray.push(Student.students_faculty);
+                    studentArray.push(Student.students_imagePath);
+                    tempDataSource.push(studentArray);
+           
+             //       console.log("student: "+student);
+             //       console.log(tempDataSource);
+
+                    studentArray = []; 
+                  }
+                  
+               dataSource = tempDataSource;
+               drawResultTable(dataSource);
+            }
+        }   			
+            http_request.open("GET", data_file, true);
+            http_request.send();
+  
+        }
+
+        function listen()
+        {
+            if(!('webkitSpeechRecognition' in window))
+            {
+                window.alert('not listening');
+            }else
+            {
+
+                var recognition = new webkitSpeechRecognition();
+                recognition.continuous = true;
+                recognition.lang = "en-US";                
+                recognition.start();
+                
+                final_script = '';
+                recognition.onstart = function (){
+                    window.alert('listening');
+                }
+
+                recognition.onresult = function(event){
+
+                    console.log(event.results);
+
+                    for ( var i = event.resultIndex; i < event.results.length; ++i )
+                    {
+                        if (event.results[i].isFinal)
+                        {
+                            final_script += event.results[i][0].transcript;
+                        }
+
+                    }
+                document.getElementById('txtSearch').value = final_script;
+                mySearch();
+                final_script = '';
+
+                }
+
+
+
+
+                
+            }
+
+        }
+  
+  </script>
+    </body>
+    </html>

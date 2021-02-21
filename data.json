@@ -1,0 +1,23 @@
+{"students":
+    [ 
+        {
+            "id": "20132627",
+            "name": "Yousef Samir Allam",
+            "faculty":"Faculty of Computers and Information Technology",
+            "image_path":"20132627.png"
+        },
+        {
+            "id": "20190000",
+            "name": "xyz",
+            "faculty":"Faculty 2",
+            "image_path":"20132627.png"
+        },
+        {
+            "id": "20181877",
+            "name": "Abdalla Ahmed Elsayed Ahmed",
+            "faculty":"Faculty of Computers and Information Technology",
+            "image_path":"20132627.png"
+        }
+    ]
+
+}

@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <title>DM324 - Home Page</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+   
+    </head>
+
+    <body>
+
+        <nav>
+            <ul>
+                <li ><a href="index.html"  >Home</a></li>
+                <li ><a href="studentlist.html" >Students List</a></li>
+                <li ><a href="new_student.html" class="active">New Student</a></li>
+        
+                <li class="nav-right"><a href="sign.html">Logout</a></li>
+            </ul>
+        
+        
+        </nav>
+<hr/>
+<section>
+    <h1 class="title">New Student</h1>
+<form action="api/add_new_student.php" method="POST" > <!--action_page.php-->
+ <!--Personal Info-->
+ <fieldset >
+    <legend>Personal Information</legend>
+   
+    <p>
+    <label>
+        Full Name: 
+        <input type="text" name="txtFullName" required> 
+
+    </label>
+</p>
+   <p> 
+    <label>
+        Birthdate: 
+        <input type="date" name="txtBirthDate">
+        
+    </label>
+</p>
+<p>
+    <label>
+        Gender: 
+        <input type="radio" name="gender" value="male">
+        Male
+        <input type="radio" name="gender" value="female">
+        Female
+    </label>
+</p>
+</fieldset>
+
+<!--Personal Info-->
+
+<!--Contact Info-->
+<fieldset>
+    <legend>Contact Information</legend>
+   
+<p>
+    <label>
+        Email: 
+        <input type="email" name="txtEmail">
+
+    </label>
+</p>
+<p>
+    <label>
+        Phone: 
+        <input type="tel" name="txtPhone">
+
+    </label>
+</p>
+<p>
+    <label>
+        Address:
+        <textarea rows="5" cols="100" name="txtAddress"></textarea>
+    </label>
+</p>
+</fieldset>
+<!--#Contact Info-->
+
+<!--University Info-->
+<fieldset>
+    <legend>University Information</legend>
+   
+<p><label >
+    Choose Your Faculty:
+    <select name="faculty">
+        <option value="f1">Faculty 1       
+        </option>
+        <option value="f2">Faculty 2       
+        </option>
+
+    </select>
+</label></p>
+</fieldset>
+
+<input type="submit" class="button" value="Add" name="add">
+
+</form>
+
+</section>   
+<hr/>
+<footer>
+ <a href ="http://www.fue.edu.eg" target="_blank">&copy; Future University in Egypt</a>&nbsp;&nbsp;&mdash;&nbsp;&nbsp;
+ <a href="mailto:20132627@fue.edu.eg">contact us</a>
+</footer>
+
+</body>
+
+</html>
